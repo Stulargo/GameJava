@@ -13,14 +13,14 @@ public class Main {
             playerName = input.nextLine();
         }
 
-        Hero player = new Hero(playerName, Hero.Level.LEVEL_1);
+        Hero player = new Hero(playerName,Level.LEVEL_1);
         player.showStats();
 
         Menu menu = new Menu();
 
         int choice;
         do {
-            menu.showMenuBox(player);
+            menu.showMenuBox();
             System.out.print("Enter your choice: ");
             choice = input.nextInt();
             input.nextLine();
@@ -42,6 +42,9 @@ public class Main {
                     break;
                 case 6:
                     player.levelUp();
+                    break;
+                case 7:
+                    menu.battleBoss(player);
                     break;
                 case 0:
                     System.out.println("Exiting the game. Goodbye!");

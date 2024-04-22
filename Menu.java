@@ -19,8 +19,8 @@ public class Menu {
             "Quest 3: Investigate the strange occurrences in the haunted mansion."
     };
 
-    public void showMenuBox(Hero player) {
-        String[] menuItems = {"Explore", "View Inventory", "Quests", "Stats", "Games","Level Up"};
+    public void showMenuBox() {
+        String[] menuItems = {"Explore", "View Inventory", "Quests", "Stats", "Games", "Level Up","Battle Boss"};
 
         System.out.println("Choose your action:");
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
@@ -34,7 +34,6 @@ public class Menu {
     public void showAndChooseGame(Hero player) {
         System.out.println("Choose a game:");
         System.out.println("1. Guessing Game");
-
 
         int choice = userInput.nextInt();
         userInput.nextLine();
@@ -59,14 +58,44 @@ public class Menu {
     }
 
     public void viewInventory(Hero player) {
+        System.out.println("Inventory:");
     }
 
     public void showQuests() {
-        System.out.println("Showing quests...");
-        System.out.println("Available quests:");
+        System.out.println("Quests:");
         for (String quest : quests) {
             System.out.println(quest);
         }
     }
 
+    public void battleBoss(Hero player) {
+        Boss boss = new Boss("Dragon", 100, 20);
+        System.out.println("A fearsome " + boss.getName() + " appears!");
+
+        double v = 0.1;
+        int i = 50;
+
+        while (player.getHealth() > 0 && boss.getHealth() > 0) {
+            int playerDamage = player.getAttackPower();
+            System.out.println(player.getName() + " attacks " + boss.getName() + " for " + playerDamage + " damage!");
+            boss.reduceHealth(playerDamage);
+
+            if (boss.getHealth() <= 0) {
+                System.out.println("Congratulations! You defeated " + boss.getName() + "!");
+                // Increase boss stats by 10%
+                boss.increaseStats(v);
+                // Increase boss health for each death
+                boss.increaseHealth(i);
+                return;
+            }
+
+            int bossDamage = boss.getAttackPower();
+            System.out.println(boss.getName() + " attacks " + player.getName() + " for " + bossDamage + " damage!");
+
+            if (player.getHealth() <= 0) {
+                System.out.println("Game over! " + boss.getName() + " defeated you!");
+                return;
+            }
+        }
+    }
 }

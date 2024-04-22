@@ -7,7 +7,7 @@ public class GuessingGame {
 
     public GuessingGame() {
         // Initialize the game
-        secretNumber = (int) (Math.random() * 10) + 1; // Generate a random number between 1 and 10
+        secretNumber = (int) (Math.random() * 10) + 1;
         scanner = new Scanner(System.in);
     }
 
