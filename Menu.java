@@ -82,9 +82,7 @@ public class Menu {
 
             if (boss.getHealth() <= 0) {
                 System.out.println("Congratulations! You defeated " + boss.getName() + "!");
-                // Increase boss stats by 10%
                 boss.increaseStats(v);
-                // Increase boss health for each death
                 boss.increaseHealth(i);
                 return;
             }
