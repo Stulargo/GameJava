@@ -13,7 +13,31 @@ public class Main {
             playerName = input.nextLine();
         }
 
-        Hero player = new Hero(playerName,Level.LEVEL_1);
+        System.out.println("Choose your starting level:");
+        System.out.println("1. Level 1");
+        System.out.println("2. Level 2");
+        System.out.println("3. Level 3");
+        System.out.print("Enter your choice: ");
+        int startingLevelChoice = input.nextInt();
+        input.nextLine();
+
+        Level startingLevel;
+        switch (startingLevelChoice) {
+            case 1:
+                startingLevel = Level.LEVEL_1;
+                break;
+            case 2:
+                startingLevel = Level.LEVEL_2;
+                break;
+            case 3:
+                startingLevel = Level.LEVEL_3;
+                break;
+            default:
+                startingLevel = Level.LEVEL_1;
+                break;
+        }
+
+        Hero player = new Hero(playerName, startingLevel);
         player.showStats();
 
         Menu menu = new Menu();
