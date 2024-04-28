@@ -4,9 +4,6 @@ public class GuessingGame {
     private static final int MAX_ATTEMPTS = 3;
     private int secretNumber;
     private Scanner scanner;
-
-    public GuessingGame() {
-        // Initialize the game
         secretNumber = (int) (Math.random() * 10) + 1;
         scanner = new Scanner(System.in);
     }
